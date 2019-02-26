@@ -60,7 +60,9 @@ class Handler:
                 'insert_id': entry.insert_id,
                 'severity': entry.severity,
                 'timestamp': entry.timestamp,
-                'payload': entry.payload
+                'payload': entry.payload,
+                'labels': entry.labels,
+                'resource': entry.resource
             }
 
             all_entries.append(entry_)
