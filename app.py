@@ -43,9 +43,9 @@ class Handler:
         # req can contain one of the following:
         # 1. projects - list
         # 2. filter - str
-        # 3. order_by - either "timestamp asc" or "timestamp desc"
-        # 4. page_size - int
-        # 5. page_token - str
+        # 3. orderBy - either "timestamp asc" or "timestamp desc"
+        # 4. pageSize - int
+        # 5. pageToken - str
 
         req['filter_'] = req.pop('filter')
         all_entries = []
@@ -67,7 +67,7 @@ class Handler:
 
             all_entries.append(entry_)
 
-            if len(all_entries) >= req.get('page_size', sys.maxsize):
+            if len(all_entries) >= req.get('pageSize', sys.maxsize):
                 break
 
         return self.end(all_entries)
@@ -85,7 +85,7 @@ if __name__ == '__main__':
         sys.exit(1)
 
     handler = Handler()
-    handler.app.add_url_rule('/entries/list', 'entries_list',
+    handler.app.add_url_rule('/entries/list', 'entriesList',
                              handler.entries_list,
                              methods=['post'])
     handler.app.run(host='0.0.0.0', port=8000)
