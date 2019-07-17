@@ -2,8 +2,12 @@ omg: 1
 lifecycle:
   startup:
     command: ["python", "/app/app.py"]
+info:
+  version: 1.0.0
+  title: Stackdrive
+  description: This is a stackdrive service
 actions:
-  entries_list:
+  entriesList:
     help: List log entries
     http:
       path: /entries/list
@@ -17,13 +21,13 @@ actions:
       filter:
         type: string
         in: requestBody
-      order_by:
+      orderBy:
         type: string
         in: requestBody
-      page_size:
+      pageSize:
         type: int
         in: requestBody
-      page_token:
+      pageToken:
         type: string
         in: requestBody
     output:
