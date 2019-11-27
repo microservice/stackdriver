@@ -1,8 +1,8 @@
 oms: 1
 info:
   version: 1.0.0
-  title: Stackdrive
-  description: This is a stackdrive service
+  title: Stackdriver
+  description: Monitoring and management for services, containers, applications, and infrastructure.
   contact:
     name: Open Microservices
     url: 'https://openmicroservices.org'

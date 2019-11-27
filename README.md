@@ -1,33 +1,69 @@
-# _Stackdriver_ OMG Microservice
+# _Stackdriver_ Open Microservice
 
-[![Open Microservice Guide](https://img.shields.io/badge/OMG%20Enabled-👍-green.svg?)](https://microservice.guide)
+> Monitoring and management for services, containers, applications, and infrastructure.
 
-Access the Stackdriver Logging API (Google Cloud Logging APIs) via an OMG service.
+[![Open Microservice Specification Version](https://img.shields.io/badge/Open%20Microservice-1.0-477bf3.svg)](https://openmicroservices.org) [![Open Microservices Spectrum Chat](https://withspectrum.github.io/badge/badge.svg)](https://spectrum.chat/open-microservices) [![Open Microservices Code of Conduct](https://img.shields.io/badge/Contributor%20Covenant-v1.4%20adopted-ff69b4.svg)](https://github.com/oms-services/.github/blob/master/CODE_OF_CONDUCT.md) [![Open Microservices Commitzen](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
 
-## Direct usage in [Storyscript](https://storyscript.io/):
+## Introduction
 
-##### Entries List
-```coffee
-logs = stackdriver entriesList projects: ['foo'] 
-                                filter: 'advanced filters'
-                                orderBy: 'timestamp desc'
-                                pageSize: 100
-                                pageToken: 'xxxx'
-log info msg: logs
+This project is an example implementation of the [Open Microservice Specification](https://openmicroservices.org), a standard originally created at [Storyscript](https://storyscript.io) for building highly-portable "microservices" that expose the events, actions, and APIs inside containerized software.
+
+## Getting Started
+
+The `oms` command-line interface allows you to interact with Open Microservices. If you're interested in creating an Open Microservice the CLI also helps validate, test, and debug your `oms.yml` implementation!
+
+See the [oms-cli](https://github.com/microservices/oms) project to learn more!
+
+### Installation
+
+```
+npm install -g @microservices/oms
 ```
 
-Curious to [learn more](https://docs.storyscript.io/)?
+## Usage
 
-✨🍰✨
+### Open Microservices CLI Usage
 
-## Usage with [OMG CLI](https://www.npmjs.com/package/omg)
+Once you have the [oms-cli](https://github.com/microservices/oms) installed, you can run any of the following commands from within this project's root directory:
 
-##### Entries List
-```shell
-$ omg run -a projects=<PROJECT_LIST> -a filter=<FILTER> -a orderBy=<ORDER_BY> -a pageSize=<PAGE_SIZE> -a pageToken=PAGE_TOKEN -e GOOGLE_CREDENTIALS_JSON=<GOOGLE_CREDENTIALS_JSON>
+#### Actions
+
+##### entriesList
+
+> List log entries
+##### Action Arguments
+
+| Argument Name | Type | Required | Default | Description |
+|:------------- |:---- |:-------- |:--------|:----------- |
+| projects | `list` | `false` | None | No description provided. |
+| filter | `string` | `false` | None | No description provided. |
+| orderBy | `string` | `false` | None | No description provided. |
+| pageSize | `int` | `false` | None | No description provided. |
+| pageToken | `string` | `false` | None | No description provided. |
+| GOOGLE_CREDENTIALS_JSON | `string` | `true` | None | The JSON contents of your credentials.json file |
+
+``` shell
+oms run entriesList \ 
+    -a projects='*****' \ 
+    -a filter='*****' \ 
+    -a orderBy='*****' \ 
+    -a pageSize='*****' \ 
+    -a pageToken='*****' \ 
+    -e GOOGLE_CREDENTIALS_JSON=$GOOGLE_CREDENTIALS_JSON
 ```
 
-**Note**: the OMG CLI requires [Docker](https://docs.docker.com/install/) to be installed.
+## Contributing
 
-## License
-[MIT License](https://github.com/omg-services/stackdriver/blob/master/LICENSE).
+All suggestions in how to improve the specification and this guide are very welcome. Feel free share your thoughts in the Issue tracker, or even better, fork the repository to implement your own ideas and submit a pull request.
+
+[![Edit stackdriver on CodeSandbox](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/oms-services/stackdriver)
+
+This project is guided by [Contributor Covenant](https://github.com/oms-services/.github/blob/master/CODE_OF_CONDUCT.md). Please read out full [Contribution Guidelines](https://github.com/oms-services/.github/blob/master/CONTRIBUTING.md).
+
+## Additional Resources
+
+* [Install the CLI](https://github.com/microservices/oms) - The OMS CLI helps developers create, test, validate, and build microservices.
+* [Example OMS Services](https://github.com/oms-services) - Examples of OMS-compliant services written in a variety of languages.
+* [Example Language Implementations](https://github.com/microservices) - Find tooling & language implementations in Node, Python, Scala, Java, Clojure.
+* [Storyscript Hub](https://hub.storyscript.io) - A public registry of OMS services.
+* [Community Chat](https://spectrum.chat/open-microservices) - Have ideas? Questions? Join us on Spectrum.
